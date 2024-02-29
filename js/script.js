@@ -18,8 +18,11 @@ if(phones.length > 8){
 else{
     show.classList.add('hidden')  
 }
+
 // display only shows 
-phones=phones.slice(0,8)
+
+  phones=phones.slice(0,8)
+
 
 phones.forEach(phone => {
     const phonCard=document.createElement('div')
@@ -33,7 +36,7 @@ phones.forEach(phone => {
     <p>${phone.phone_name}</p>
     <p>666</p>
     <div class="card-actions">
-      <button class="btn btn-primary">Buy Now</button>
+      <button onclick=" modelShows('${phone.slug}')" class="btn btn-primary">Show detail</button>
     </div>
   </div>
     `
@@ -42,6 +45,42 @@ phones.forEach(phone => {
     sprinner(false)
 });
 }
+// show phone deletels 
+const showPhonDetels=()=>{
+  
+}
+// model open 
+const modelShows=async (id)=>{
+
+// load single data 
+const rest =await fetch(`https://openapi.programming-hero.com/api/phone/${id}`)
+const data = await rest.json()
+const phon =data.data
+showDisplay(phon)
+}
+const showDisplay=(phone)=>{
+  console.log(phone)
+  my_modal_3.showModal()
+  
+  const divC =document.getElementById('dtl-conteinar');
+  divC.textContent=""
+  const div=document.createElement('div');
+  div.innerHTML=`
+  <img src="${phone.image}" alt="">
+  <h3 class="font-bold text-lg">${phone.brand}</h3>
+  <p>${phone.name}</p>
+  <p>${phone.releaseDate}</p>
+  
+  `
+  divC.appendChild(div)
+  
+
+  
+}
+
+
+
+
 // handle search 
 const searchHandle=()=>{
     sprinner(true)
@@ -60,3 +99,6 @@ const sprinner=(isloading)=>{
             sinner.classList.add('hidden')
            }
 }
+
+// handle show all 
+loadPhon()

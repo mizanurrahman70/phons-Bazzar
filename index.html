@@ -35,9 +35,24 @@
                 
             </div>
             <!-- show all button  -->
-            <div id="show-button" class="hidden container flex flex-col my-6 mx-auto justify-center items-center">
+            <div onclick="showAll()" id="show-button" class="hidden container flex flex-col my-6 mx-auto justify-center items-center">
               <button class="btn btn-active btn-primary ">Show all</button>
             </div>
+            <!-- show deteil modal -->
+            <!-- You can open the modal using ID.showModal() method -->
+
+<dialog id="my_modal_3" class="modal">
+  <div class="modal-box">
+    <form method="dialog">
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    </form>
+    <div id="dtl-conteinar" class="dtl-conteinar">
+     <!-- <h1>all</h1> -->
+ 
+  </div>
+   
+  </div>
+</dialog>
         </section>
     </main>
     <footer></footer>
